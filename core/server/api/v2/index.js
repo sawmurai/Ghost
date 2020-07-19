@@ -137,5 +137,9 @@ module.exports = {
 
     get authorsPublic() {
         return shared.pipeline(require('./authors-public'), localUtils, 'content');
+    },
+
+    get registrations() {
+        return shared.pipeline(require('./registrations'), localUtils);
     }
 };

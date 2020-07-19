@@ -58,9 +58,9 @@ const http = (apiImpl) => {
             .then((result) => {
                 debug(`External API request to ${frame.docName}.${frame.method}`);
                 return shared.headers.get(result, apiImpl.headers, frame)
-                    .then(headers => ({result, headers}));
+                    .then(headers => ({ result, headers }));
             })
-            .then(({result, headers}) => {
+            .then(({ result, headers }) => {
                 // CASE: api ctrl wants to handle the express response (e.g. streams)
                 if (typeof result === 'function') {
                     debug('ctrl function call');

@@ -53,7 +53,7 @@ module.exports = function apiRoutes() {
     router.post('/settings/routes/yaml',
         mw.authAdminApi,
         apiMw.upload.single('routes'),
-        apiMw.upload.validation({type: 'routes'}),
+        apiMw.upload.validation({ type: 'routes' }),
         http(apiv2.settings.upload)
     );
 
@@ -98,7 +98,7 @@ module.exports = function apiRoutes() {
     router.post('/themes/upload',
         mw.authAdminApi,
         apiMw.upload.single('file'),
-        apiMw.upload.validation({type: 'themes'}),
+        apiMw.upload.validation({ type: 'themes' }),
         http(apiv2.themes.upload)
     );
 
@@ -122,7 +122,7 @@ module.exports = function apiRoutes() {
     router.post('/db',
         mw.authAdminApi,
         apiMw.upload.single('importfile'),
-        apiMw.upload.validation({type: 'db'}),
+        apiMw.upload.validation({ type: 'db' }),
         http(apiv2.db.importContent)
     );
     router.del('/db', mw.authAdminApi, http(apiv2.db.deleteAllContent));
@@ -165,7 +165,7 @@ module.exports = function apiRoutes() {
     router.post('/images/upload',
         mw.authAdminApi,
         apiMw.upload.single('file'),
-        apiMw.upload.validation({type: 'images'}),
+        apiMw.upload.validation({ type: 'images' }),
         apiMw.normalizeImage,
         http(apiv2.images.upload)
     );
@@ -181,7 +181,7 @@ module.exports = function apiRoutes() {
     router.post('/redirects/json',
         mw.authAdminApi,
         apiMw.upload.single('redirects'),
-        apiMw.upload.validation({type: 'redirects'}),
+        apiMw.upload.validation({ type: 'redirects' }),
         http(apiv2.redirects.upload)
     );
 
@@ -195,6 +195,8 @@ module.exports = function apiRoutes() {
 
     // ## Actions
     router.get('/actions/:type/:id', mw.authAdminApi, http(apiv2.actions.browse));
+
+    router.get('/registrations', mw.authAdminApi, http(apiv2.registrations.read));
 
     return router;
 };
